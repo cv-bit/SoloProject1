@@ -1,0 +1,96 @@
+@charset "ISO-8859-1";
+@charset "ISO-8859-1";
+
+*{
+	margin:0;
+	padding:0;
+}
+
+.container{
+	width:100%;
+}
+
+.header{
+	width:100%;
+	padding:5px;
+	background-color:red;
+	color:white;
+	font-size:3vw;
+}
+
+.nav{
+	width:100%;
+	padding:5px;
+	background-color:green;
+	color:white;
+}
+
+.button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color:white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size:2.5vw;
+}
+
+.button:hover{
+	color:black;
+}
+
+.content{
+	
+}
+
+.menu{
+	color:black;
+	font-size:2vw;
+	font-weight:bold;
+}
+.menu:hover{
+	color:red;
+}
+
+a{
+	color:white;
+	font-size:3vw;
+	text-decoration:none;
+}
+
+a:hover{
+	color:black;
+}
+
+.price{
+	color:green;
+	font-size:2vw;
+}
+
+.desc{
+	font-size:1.5vw;
+}
+
+.footer{
+	height:auto;
+	padding:5px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color:black;
+	color:white;
+	font-size:2vw;
+}
+
+.github{
+	width:3%;
+	height:auto;
+	border-radius:50%;
+	display:inline-block;
+}
+
+.github:hover{
+	cursor:pointer;
+	width:4%;
+	height:auto;
+}
