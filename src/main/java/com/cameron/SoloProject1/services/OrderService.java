@@ -38,14 +38,15 @@ public class OrderService {
 	}
 	
 	public void addItem(Order order, Item item) {
-		List<Item> currCart = order.getItem();
-		currCart.add(item);
+		List<Item> buys = order.getBuys();
+		buys.add(item);
+		order.setBuys(buys);
 		this.oRepo.save(order);
 	}
 	
 	public void removeItem(Order order, Item item) {
-		List<Item> currCart = order.getItem();
-		currCart.remove(item);
+		List<Item> customer = order.getBuys();
+		customer.remove(item);
 		this.oRepo.save(order);
 	}
 }

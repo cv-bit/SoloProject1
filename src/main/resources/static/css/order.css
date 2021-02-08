@@ -40,7 +40,20 @@
 }
 
 .content{
-	
+	width:100%;
+	height:auto;
+	display:flex;
+	justify-content:center;
+}
+
+th, td {
+    border: 1px solid black;
+    padding:1rem;
+    z-index:2;
+}
+
+th{
+	font-size:2vw;
 }
 
 .menu{

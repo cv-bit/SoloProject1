@@ -2,13 +2,13 @@ package com.cameron.SoloProject1.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -27,8 +27,13 @@ public class Order {
 	@NotNull
 	private Integer phone;
 	
-	@OneToMany(mappedBy="order", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Item> item;
+	@ManyToMany
+	@JoinTable(
+			name="purchase",
+			joinColumns = @JoinColumn(name="order_id"),
+			inverseJoinColumns = @JoinColumn(name="item_id")
+			)
+	private List<Item> buys;
 
 	public Order() {
 		super();
@@ -67,13 +72,11 @@ public class Order {
 		this.phone = phone;
 	}
 
-	public List<Item> getItem() {
-		return item;
+	public List<Item> getBuys() {
+		return buys;
 	}
 
-	public void setItem(List<Item> item) {
-		this.item = item;
+	public void setBuys(List<Item> buys) {
+		this.buys = buys;
 	}
-	
-	
 }

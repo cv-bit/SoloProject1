@@ -20,17 +20,10 @@
 		</nav>
 		<div class="content">
 			<table>
-				<thead>
-					<tr>
-						<th>name</th>
-						<th>description</th>
-						<th>price</th>
-					</tr>
-				</thead>
 				<tbody>
 				<c:forEach items="${allItem}" var="item">
 					<tr>
-						<td><a href="#" class="menu">${item.name}</a></td>
+						<td><a href="/buy/${item.id}" class="menu">${item.name}</a></td>
             	    	<td class="desc">${item.description}</td>
             	   		<td class= "price">${item.price}</td>
 					</tr>

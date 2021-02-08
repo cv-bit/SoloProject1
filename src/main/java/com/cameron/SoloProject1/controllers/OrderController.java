@@ -1,10 +1,8 @@
 package com.cameron.SoloProject1.controllers;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.cameron.SoloProject1.models.Item;
 import com.cameron.SoloProject1.models.Order;
 import com.cameron.SoloProject1.services.ItemService;
@@ -33,7 +29,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/cart/{id}")
-	public String updateCart(@PathVariable("id") Long id, Model viewModel, HttpSession session) {
+	public String updateCart(@PathVariable("id") Long id, Model viewModel, HttpSession session) {		
 		session.setAttribute("order", id);
 		viewModel.addAttribute("order", oService.getSingleOrder(id));
 		return "/cart.jsp";
@@ -69,9 +65,24 @@ public class OrderController {
 		return "redirect:/";
 	}
 	
-	/*@PostMapping("/addItem${id}")
-	public String addItem() {
-		
-	}*/
+	@GetMapping("/buy/{id}")
+	public String addItem(@PathVariable("id") Long id, HttpSession session, Model viewModel) {
+		Long OrderId = (Long)session.getAttribute("order");
+		Long ItemId = id;
+		Order customer = this.oService.getSingleOrder(OrderId);
+		Item buys = this.iService.getById(ItemId);
+		this.oService.addItem(customer, buys);
+		return "redirect:/order/" + OrderId;
+	}
+	
+	@GetMapping("/unBuy/{id}")
+	public String unlike(@PathVariable("id") Long id, HttpSession session) {
+		Long OrderId = (Long)session.getAttribute("order");
+		Long ItemId = id;
+		Order order = this.oService.getSingleOrder(OrderId);
+		Item buys = this.iService.getById(ItemId);
+		this.oService.removeItem(order, buys);
+		return "redirect:/cart/${id}";
+	}
 }
 

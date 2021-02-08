@@ -1,12 +1,14 @@
 package com.cameron.SoloProject1.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -20,9 +22,13 @@ public class Item {
 	private String description;
 	private Double price;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="order_id")
-	private Order order;
+	@ManyToMany
+	@JoinTable(
+			name="purchase",
+			joinColumns = @JoinColumn(name="item_id"),
+			inverseJoinColumns = @JoinColumn(name="order_id")
+			)
+	private List<Order> customer;
 	
 	public Item() {
 		super();
@@ -61,13 +67,13 @@ public class Item {
 		this.price = price;
 	}
 
-	public Order getOrder() {
-		return order;
+	public List<Order> getCustomer() {
+		return customer;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setCustomer(List<Order> customer) {
+		this.customer = customer;
 	}
-	
+
 	
 }

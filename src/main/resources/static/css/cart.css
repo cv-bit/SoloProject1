@@ -24,6 +24,20 @@
 	color:white;
 }
 
+.cart{
+	float:right;
+	margin-right:1rem;
+	font-size:2vw;
+}
+
+.image{
+	width:1.5rem;
+	height:auto;
+	border-radius:10%;
+	float:right;
+	margin-right:5rem;
+}
+
 .button {
   background: none!important;
   border: none;
@@ -40,7 +54,7 @@
 
 .content{
 	border:2px solid black;
-	height:25rem;
+	height:35rem;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
@@ -48,9 +62,25 @@
 
 .summary{
 	border:1px solid black;
-	width:50%;
+	width:35%;
 	min-height:15rem;
 	height:auto;
+	padding:1rem;
+	margin-top:2rem;
+}
+
+button{
+	background-color:red;
+	color:white;
+	border:none;
+	padding:.2rem;
+	margin:.2rem;
+	box-shadow:2px 2px 2px black;
+}
+
+button:hover{
+	background-color:green;
+	cursor:pointer;
 }
 
 .footer{
